@@ -205,28 +205,29 @@ Download OpenBLAS from [here](https://sourceforge.net/projects/openblas/files/v0
 ## Switching between CPU and GPU mode
 
 Setup theano environmnet to enable the GPU acceleration. Put this .theanorc.txt file at the original route of your bash(ex.C:\Users\Jeffrey )
---------------------------------------------------------------------------------------------------
-[global]
-openmp = False
-floatX = float32
-device = gpu
+```
+   [global]
+   openmp = False
+   floatX = float32
+   device = gpu
 
-[blas]
-ldflags = C:\Users\Jeffrey\CSRA\toolkit\OpenBLAS-v0.2.14-Win64-int32\bin -lopenblas
+   [blas]
+   ldflags = C:\Users\Jeffrey\CSRA\toolkit\OpenBLAS-v0.2.14-Win64-int32\bin -lopenblas
 
-[gcc]
-cxxflags = -IC:\Users\Jeffrey\CSRA\toolkit\mingw\mingw64\include
+   [gcc]
+   cxxflags = -IC:\Users\Jeffrey\CSRA\toolkit\mingw\mingw64\include
 
 
-[nvcc]
-flags=-LC:\Users\Jeffrey\CSRA\toolkit\Anaconda2\libs
-compiler_bindir=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin
+   [nvcc]
+   flags=-LC:\Users\Jeffrey\CSRA\toolkit\Anaconda2\libs
+   compiler_bindir=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin
 
-[cudnn]
-optimizer_including = cudnn
-dnn.conv.algo_bwd_filter=deterministic
-dnn.conv.algo_bwd_data=deterministic
-----------------------------------------------------------------------------------------------------------
+   [cudnn]
+   optimizer_including = cudnn
+   dnn.conv.algo_bwd_filter=deterministic
+   dnn.conv.algo_bwd_data=deterministic
+```   
+
 
 
 ## Validating our OpenBLAS install (Optional)
