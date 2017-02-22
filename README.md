@@ -202,9 +202,9 @@ Download OpenBLAS from [here](https://sourceforge.net/projects/openblas/files/v0
 1. Define sysenv variable `OPENBLAS_HOME` with the value `c:\toolkits\openblas-0.2.14-int32`
 2. Add `%OPENBLAS_HOME%\bin` to `PATH`
 
-## Switching between CPU and GPU mode
+##Setup theano environmnet to enable the GPU acceleration. 
 
-Setup theano environmnet to enable the GPU acceleration. Put this .theanorc.txt file at the original route of your bash(ex.C:\Users\Jeffrey )
+Put this .theanorc.txt file at the original route of your bash(ex.C:\Users\Jeffrey )
 ```
    [global]
    openmp = False
