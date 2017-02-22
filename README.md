@@ -204,23 +204,29 @@ Download OpenBLAS from [here](https://sourceforge.net/projects/openblas/files/v0
 
 ## Switching between CPU and GPU mode
 
-Next, create the two following sysenv variables:
+Setup theano environmnet to enable the GPU acceleration. Put this .theanorc.txt file at the original route of your bash(ex.C:\Users\Jeffrey )
+--------------------------------------------------------------------------------------------------
+[global]
+openmp = False
+floatX = float32
+device = gpu
 
-- sysenv variable `THEANO_FLAGS_CPU` with the value:
+[blas]
+ldflags = C:\Users\Jeffrey\CSRA\toolkit\OpenBLAS-v0.2.14-Win64-int32\bin -lopenblas
 
-`floatX=float32,device=cpu,lib.cnmem=0.8,blas.ldflags=-LC:/toolkits/openblas-0.2.14-int32/bin -lopenblas`
+[gcc]
+cxxflags = -IC:\Users\Jeffrey\CSRA\toolkit\mingw\mingw64\include
 
-- sysenv variable `THEANO_FLAGS_GPU` with the value:
 
-`floatX=float32,device=gpu,dnn.enabled=False,lib.cnmem=0.8,blas.ldflags=-LC:/toolkits/openblas-0.2.14-int32/bin -lopenblas`
+[nvcc]
+flags=-LC:\Users\Jeffrey\CSRA\toolkit\Anaconda2\libs
+compiler_bindir=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin
 
-Theano only cares about the value of the sysenv variable named `THEANO_FLAGS`. All we need to do to tell Theano to use the CPU or GPU is to set `THEANO_FLAGS` to either `THEANO_FLAGS_CPU` or `THEANO_FLAGS_GPU`. You can verify those variables have been successfully added to your environment with the following command:
-
-```
-$ env | grep -i theano
-```
-
-![](img/theano-env-2016-10.png)
+[cudnn]
+optimizer_including = cudnn
+dnn.conv.algo_bwd_filter=deterministic
+dnn.conv.algo_bwd_data=deterministic
+----------------------------------------------------------------------------------------------------------
 
 
 ## Validating our OpenBLAS install (Optional)
